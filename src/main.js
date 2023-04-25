@@ -1,5 +1,7 @@
 import 'uno.css'
+
 import { createApp } from 'vue'
+
 import { setupStore } from '@/store'
 import { registerGlobComp } from '@/components/registerGlobComp'
 import { router, setupRouter } from '@/router'
@@ -9,6 +11,7 @@ import { setupErrorHandle } from '@/logics/error-handle'
 import App from './App.vue'
 
 import './assets/main.css'
+import 'ant-design-vue/dist/antd.less'
 
 async function bootstrap() {
   const app = createApp(App)

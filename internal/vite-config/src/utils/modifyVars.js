@@ -29,7 +29,7 @@ export function generateModifyVars() {
   return {
     ...modifyVars,
     // reference:  Avoid repeated references
-    hack: `${modifyVars.hack} @import (reference) "${resolve('src/design/config.less')}";`,
+    // hack: `${modifyVars.hack} @import (reference) "${resolve('src/design/config.less')}";`,
     'primary-color': primary,
     ...primaryColorObj,
     'info-color': primary,

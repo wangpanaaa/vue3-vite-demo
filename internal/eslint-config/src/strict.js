@@ -1,5 +1,4 @@
 export default {
-  extends: ['@vben'],
   plugins: ['simple-import-sort'],
   rules: {
     'simple-import-sort/imports': 'error',
