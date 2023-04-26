@@ -11,7 +11,6 @@ import { setupErrorHandle } from '@/logics/error-handle'
 import App from './App.vue'
 import './assets/main.css'
 import 'ant-design-vue/dist/antd.less'
-
 async function bootstrap() {
   const app = createApp(App)
 

@@ -6,7 +6,7 @@ const commonConfig = {
     host: true,
   },
   esbuild: {
-    drop: ['console', 'debugger'],
+    drop: [ 'debugger'],
   },
   build: {
     reportCompressedSize: false,

@@ -16,14 +16,13 @@ function defineApplicationConfig(defineOptions = {}) {
   return defineConfig(async ({ command, mode }) => {
     const root = process.cwd();
     const isBuild = command === 'build';
-    const { VITE_USE_MOCK, VITE_BUILD_COMPRESS, VITE_ENABLE_ANALYZE } = loadEnv(mode, root);
+    const { VITE_BUILD_COMPRESS, VITE_ENABLE_ANALYZE } = loadEnv(mode, root);
 
     const defineData = await createDefineData(root);
     const plugins = await createPlugins({
       isBuild,
       root,
       enableAnalyze: VITE_ENABLE_ANALYZE === 'true',
-      enableMock: VITE_USE_MOCK === 'true',
       compress: VITE_BUILD_COMPRESS,
     });
 
