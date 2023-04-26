@@ -1,7 +1,7 @@
 import { PAGE_NOT_FOUND_ROUTE, REDIRECT_ROUTE } from '/@/router/routes/basic';
 
 // import.meta.globEager() 直接引入所有的模块 Vite 独有的功能
-const modules = import.meta.globEager('./modules/**/*.ts');
+const modules = import.meta.glob('./modules/**/*.js')
 const routeModuleList = [];
 
 // 加入到路由集合中
@@ -26,7 +26,7 @@ export const RootRoute = {
 export const LoginRoute = {
   path: '/login',
   name: 'Login',
-  component: () => import('/@/views/AboutView.vue'),
+  component: () => import('/@/views/login.vue'),
   meta: {}
 }
 

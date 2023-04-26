@@ -65,6 +65,7 @@ export function createPermissionGuard(router) {
     //     NProgress.done()
     //   }
     // }
+    next();
     NProgress.done()
   });
 
