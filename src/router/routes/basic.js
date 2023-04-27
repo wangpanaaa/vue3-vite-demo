@@ -42,7 +42,7 @@ export const REDIRECT_ROUTE = {
     {
       path: '/redirect/:path(.*)',
       name: REDIRECT_NAME,
-      component: () => import('/@/views/AboutView.vue'),
+      component: () => import('/@/views/Redirect.vue'),
       meta: {
         title: REDIRECT_NAME,
         hideBreadcrumb: true
