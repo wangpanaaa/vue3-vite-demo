@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 import { store } from '/@/store';
 
 import { formatToDateTime } from '/@/utils/dateUtil';
-import projectSetting from '/@/settings/projectSetting';
+import projectSetting from '/@/setting/projectSetting';
 
 import { ErrorTypeEnum } from '/@/enums/exceptionEnum';
 

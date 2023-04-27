@@ -1,5 +1,8 @@
 <template>
-  <div class="layouts">这是layouts</div>
+  <div class="layouts">
+    <div>这是layouts</div>
+    <RouterView />
+  </div>
 </template>
 
 <script setup>

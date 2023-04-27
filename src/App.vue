@@ -1,23 +1,15 @@
 
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-    <div>
-        <a-button type="primary" @click='testNetwork'>网络测试</a-button>
-    </div>
-  </header>
-
-  <RouterView />
+  <div>
+    <RouterView />
+  </div>
 </template>
 
 <script setup>
-import {loginApi} from '/@/api/user'
-
-const testNetwork=async()=>{
-  const res=await loginApi({user:'1111',pwd:'22222'});
-  console.log(res);
-}
+// 设置网站title 
+import { useTitle } from '@/setting/useTitle';
+useTitle();
 </script>
 
 <style scoped>

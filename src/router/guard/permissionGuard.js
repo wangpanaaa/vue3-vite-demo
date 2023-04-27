@@ -2,10 +2,11 @@
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 // import { getToken } from '@/utils/auth'
-// import { isHttp } from '@/utils/validate'
+import { isHttp } from '/@/utils/is'
+import { basicRoutes,asyncRoutes } from '/@/router/routes'
 // import { isRelogin } from '@/utils/request'
 // import useUserStore from '@/store/modules/user'
-// import useSettingsStore from '@/store/modules/settings'
+// import useSettingsStore from '@/store/modules/setting'
 // import usePermissionStore from '@/store/modules/permission'
 
 NProgress.configure({ showSpinner: false })
@@ -65,7 +66,10 @@ export function createPermissionGuard(router) {
     //     NProgress.done()
     //   }
     // }
-    next();
+    asyncRoutes.forEach((route) => {
+      router.addRoute(route) // 动态添加可访问路由表
+    })
+    next()
     NProgress.done()
   });
 

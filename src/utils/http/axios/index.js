@@ -4,7 +4,7 @@
 import { clone } from 'lodash-es';
 import { VAxios } from './Axios';
 import { checkStatus } from './checkStatus';
-import { useGlobSetting } from '/@/settings'
+import { useGlobSetting } from '/@/setting'
 import { useMessage } from '/@/utils/useMessage.jsx'
 import { isString, isUnDef, isNull, isEmpty } from '/@/utils/is';
 import { api } from '/@/enums/sys'

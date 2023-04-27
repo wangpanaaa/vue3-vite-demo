@@ -6,7 +6,7 @@
 import { useErrorLogStoreWithOut } from '/@/store/modules/errorLog';
 
 import { ErrorTypeEnum } from '/@/enums/exceptionEnum';
-import projectSetting from '/@/settings/projectSetting';
+import projectSetting from '/@/setting/projectSetting'
 
 /**
  * Handling error stack information

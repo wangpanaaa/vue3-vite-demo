@@ -16,7 +16,7 @@
 //     fireResourceError: '点击触发资源加载错误',
 //     fireAjaxError: '点击触发ajax错误',
 
-//     enableMessage: '只在`/src/settings/projectSetting.ts` 内的useErrorHandle=true时生效.'
+//     enableMessage: '只在`/src/setting/projectSetting.ts` 内的useErrorHandle=true时生效.'
 //   },
 //   exception: {
 //     backLogin: '返回登录',

@@ -50,26 +50,3 @@ export const REDIRECT_ROUTE = {
     }
   ]
 }
-
-export const ERROR_LOG_ROUTE = {
-  path: '/error-log',
-  name: 'ErrorLog',
-  component: LAYOUT,
-  redirect: '/error-log/list',
-  meta: {
-    title: 'ErrorLog',
-    hideBreadcrumb: true,
-    hideChildrenInMenu: true
-  },
-  children: [
-    {
-      path: 'list',
-      name: 'ErrorLogList',
-      component: () => import('/@/views/AboutView'),
-      meta: {
-        hideBreadcrumb: true,
-        currentActiveMenu: '/error-log'
-      }
-    }
-  ]
-}

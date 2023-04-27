@@ -2,10 +2,6 @@ import { Modal, message as Message, notification } from 'ant-design-vue';
 import { InfoCircleFilled, CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons-vue';
 import { isString } from '/@/utils/is';
 
-
-
-
-
 function getIcon(iconType) {
   if (iconType === 'warning') {
     return <InfoCircleFilled class="modal-icon-warning" />;

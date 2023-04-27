@@ -4,7 +4,7 @@ export const PARENT_LAYOUT_NAME = 'ParentLayout'
 
 export const PAGE_NOT_FOUND_NAME = 'PageNotFound'
 
-export const EXCEPTION_COMPONENT = () => import('/@/layouts/index.vue')
+export const EXCEPTION_COMPONENT = () => import('/@/views/Exception.vue')
 
 /**
  * @description: default layout

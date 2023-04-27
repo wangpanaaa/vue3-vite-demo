@@ -1,7 +1,7 @@
 import { useMessage } from '/@/utils/useMessage.jsx'
 
 // import { useUserStoreWithOut } from '/@/store/modules/user'
-// import projectSetting from '/@/settings/projectSetting'
+// import projectSetting from '/@/setting/projectSetting'
 // import { SessionTimeoutProcessingEnum } from '/@/enums/appEnum'
 
 import { api } from '/@/enums/sys.js'
