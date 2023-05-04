@@ -2,10 +2,6 @@
   <div>这是注册</div>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style>
-
-</style>
+<style></style>

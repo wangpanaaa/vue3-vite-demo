@@ -33,8 +33,7 @@ async function bootstrap() {
   // 注册全局指令
   setupGlobDirectives(app)
 
-
   app.mount('#app')
 }
 
-bootstrap();
+bootstrap()

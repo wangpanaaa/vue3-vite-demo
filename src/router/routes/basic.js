@@ -1,9 +1,4 @@
-import {
-  REDIRECT_NAME,
-  LAYOUT,
-  EXCEPTION_COMPONENT,
-  PAGE_NOT_FOUND_NAME,
-} from '/@/router/constant';
+import { REDIRECT_NAME, LAYOUT, EXCEPTION_COMPONENT, PAGE_NOT_FOUND_NAME } from '/@/router/constant'
 
 // 404 on a page
 export const PAGE_NOT_FOUND_ROUTE = {
@@ -13,7 +8,7 @@ export const PAGE_NOT_FOUND_ROUTE = {
   meta: {
     title: 'ErrorPage',
     hideBreadcrumb: true,
-    hideMenu: true,
+    hideMenu: true
   },
   children: [
     {
@@ -23,11 +18,11 @@ export const PAGE_NOT_FOUND_ROUTE = {
       meta: {
         title: 'ErrorPage',
         hideBreadcrumb: true,
-        hideMenu: true,
-      },
-    },
-  ],
-};
+        hideMenu: true
+      }
+    }
+  ]
+}
 
 export const REDIRECT_ROUTE = {
   path: '/redirect',

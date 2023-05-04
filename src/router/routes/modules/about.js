@@ -1,4 +1,3 @@
-
 const about = {
   path: '/about',
   name: 'About',

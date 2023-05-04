@@ -1,5 +1,3 @@
-
-
 <template>
   <div>
     <RouterView />
@@ -7,9 +5,9 @@
 </template>
 
 <script setup>
-// 设置网站title 
-import { useTitle } from '@/setting/useTitle';
-useTitle();
+// 设置网站title
+import { useTitle } from '@/setting/useTitle'
+useTitle()
 </script>
 
 <style scoped>

@@ -1,40 +1,37 @@
+import { defineStore } from 'pinia'
+import { store } from '/@/store'
 
-import { defineStore } from 'pinia';
-import { store } from '/@/store';
+import { formatToDateTime } from '/@/utils/dateUtil'
+import projectSetting from '/@/setting/projectSetting'
 
-import { formatToDateTime } from '/@/utils/dateUtil';
-import projectSetting from '/@/setting/projectSetting';
-
-import { ErrorTypeEnum } from '/@/enums/exceptionEnum';
-
-
+import { ErrorTypeEnum } from '/@/enums/exceptionEnum'
 
 export const useErrorLogStore = defineStore({
   id: 'app-error-log',
   state: () => ({
     errorLogInfoList: null,
-    errorLogListCount: 0,
+    errorLogListCount: 0
   }),
   getters: {
     getErrorLogInfoList(state) {
-      return state.errorLogInfoList || [];
+      return state.errorLogInfoList || []
     },
     getErrorLogListCount(state) {
-      return state.errorLogListCount;
-    },
+      return state.errorLogListCount
+    }
   },
   actions: {
     addErrorLogInfo(info) {
       const item = {
         ...info,
-        time: formatToDateTime(new Date()),
-      };
-      this.errorLogInfoList = [item, ...(this.errorLogInfoList || [])];
-      this.errorLogListCount += 1;
+        time: formatToDateTime(new Date())
+      }
+      this.errorLogInfoList = [item, ...(this.errorLogInfoList || [])]
+      this.errorLogListCount += 1
     },
 
     setErrorLogListCount(count) {
-      this.errorLogListCount = count;
+      this.errorLogListCount = count
     },
 
     /**
@@ -43,31 +40,31 @@ export const useErrorLogStore = defineStore({
      * @returns
      */
     addAjaxErrorInfo(error) {
-      const { useErrorHandle } = projectSetting;
+      const { useErrorHandle } = projectSetting
       if (!useErrorHandle) {
-        return;
+        return
       }
       const errInfo = {
         message: error.message,
-        type: ErrorTypeEnum.AJAX,
-      };
+        type: ErrorTypeEnum.AJAX
+      }
       if (error.response) {
         const {
           config: { url = '', data: params = '', method = 'get', headers = {} } = {},
-          data = {},
-        } = error.response;
-        errInfo.url = url;
-        errInfo.name = 'Ajax Error!';
-        errInfo.file = '-';
-        errInfo.stack = JSON.stringify(data);
-        errInfo.detail = JSON.stringify({ params, method, headers });
+          data = {}
+        } = error.response
+        errInfo.url = url
+        errInfo.name = 'Ajax Error!'
+        errInfo.file = '-'
+        errInfo.stack = JSON.stringify(data)
+        errInfo.detail = JSON.stringify({ params, method, headers })
       }
-      this.addErrorLogInfo(errInfo);
-    },
-  },
-});
+      this.addErrorLogInfo(errInfo)
+    }
+  }
+})
 
 // Need to be used outside the setup
 export function useErrorLogStoreWithOut() {
-  return useErrorLogStore(store);
+  return useErrorLogStore(store)
 }

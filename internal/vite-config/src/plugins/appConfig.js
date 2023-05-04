@@ -1,39 +1,36 @@
-import colors from 'picocolors';
-import { readPackageJSON } from 'pkg-types';
+import colors from 'picocolors'
+import { readPackageJSON } from 'pkg-types'
 
-import { getEnvConfig } from '../utils/env';
-import { createContentHash } from '../utils/hash';
+import { getEnvConfig } from '../utils/env'
+import { createContentHash } from '../utils/hash'
 
-const GLOBAL_CONFIG_FILE_NAME = '_app.config.js';
-const PLUGIN_NAME = 'app-config';
+const GLOBAL_CONFIG_FILE_NAME = '_app.config.js'
+const PLUGIN_NAME = 'app-config'
 
-async function createAppConfigPlugin({
-  root,
-  isBuild,
-}){
-  let publicPath;
-  let source;
+async function createAppConfigPlugin({ root, isBuild }) {
+  let publicPath
+  let source
   if (!isBuild) {
     return {
-      name: PLUGIN_NAME,
-    };
+      name: PLUGIN_NAME
+    }
   }
-  const { version = '' } = await readPackageJSON(root);
+  const { version = '' } = await readPackageJSON(root)
 
   return {
     name: PLUGIN_NAME,
     async configResolved(_config) {
-      let appTitle = _config?.env?.VITE_GLOB_APP_TITLE ?? '';
-      appTitle = appTitle.replace(/\s/g, '_');
-      publicPath = _config.base;
-      source = await getConfigSource(appTitle);
+      let appTitle = _config?.env?.VITE_GLOB_APP_TITLE ?? ''
+      appTitle = appTitle.replace(/\s/g, '_')
+      publicPath = _config.base
+      source = await getConfigSource(appTitle)
     },
     async transformIndexHtml(html) {
-      publicPath = publicPath.endsWith('/') ? publicPath : `${publicPath}/`;
+      publicPath = publicPath.endsWith('/') ? publicPath : `${publicPath}/`
 
       const appConfigSrc = `${
         publicPath || '/'
-      }${GLOBAL_CONFIG_FILE_NAME}?v=${version}-${createContentHash(source)}}`;
+      }${GLOBAL_CONFIG_FILE_NAME}?v=${version}-${createContentHash(source)}}`
 
       return {
         html,
@@ -41,28 +38,28 @@ async function createAppConfigPlugin({
           {
             tag: 'script',
             attrs: {
-              src: appConfigSrc,
-            },
-          },
-        ],
-      };
+              src: appConfigSrc
+            }
+          }
+        ]
+      }
     },
     async generateBundle() {
       try {
         this.emitFile({
           type: 'asset',
           fileName: GLOBAL_CONFIG_FILE_NAME,
-          source,
-        });
+          source
+        })
 
-        console.log(colors.cyan(`✨configuration file is build successfully!`));
+        console.log(colors.cyan(`✨configuration file is build successfully!`))
       } catch (error) {
         console.log(
-          colors.red('configuration file configuration file failed to package:\n' + error),
-        );
+          colors.red('configuration file configuration file failed to package:\n' + error)
+        )
       }
-    },
-  };
+    }
+  }
 }
 
 /**
@@ -70,23 +67,23 @@ async function createAppConfigPlugin({
  * @param env
  */
 const getVariableName = (title) => {
-  return `__PRODUCTION__${title || '__APP'}__CONF__`.toUpperCase().replace(/\s/g, '');
-};
+  return `__PRODUCTION__${title || '__APP'}__CONF__`.toUpperCase().replace(/\s/g, '')
+}
 
 async function getConfigSource(appTitle) {
-  const config = await getEnvConfig();
-  const variableName = getVariableName(appTitle);
-  const windowVariable = `window.${variableName}`;
+  const config = await getEnvConfig()
+  const variableName = getVariableName(appTitle)
+  const windowVariable = `window.${variableName}`
   // Ensure that the variable will not be modified
-  let source = `${windowVariable}=${JSON.stringify(config)};`;
+  let source = `${windowVariable}=${JSON.stringify(config)};`
   source += `
     Object.freeze(${windowVariable});
     Object.defineProperty(window, "${variableName}", {
       configurable: false,
       writable: false,
     });
-  `.replace(/\s/g, '');
-  return source;
+  `.replace(/\s/g, '')
+  return source
 }
 
-export { createAppConfigPlugin };
+export { createAppConfigPlugin }

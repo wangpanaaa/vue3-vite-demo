@@ -12,8 +12,8 @@ module.exports = {
     {
       files: '.*rc',
       options: {
-        parser: 'json',
-      },
-    },
-  ],
-};
+        parser: 'json'
+      }
+    }
+  ]
+}

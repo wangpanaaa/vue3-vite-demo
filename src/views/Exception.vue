@@ -2,10 +2,6 @@
   <div>404辣</div>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style>
-
-</style>
+<style></style>

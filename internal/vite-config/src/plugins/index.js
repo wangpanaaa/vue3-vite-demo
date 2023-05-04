@@ -1,49 +1,46 @@
-import vue from '@vitejs/plugin-vue';
-import vueJsx from '@vitejs/plugin-vue-jsx';
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 // @ts-ignore: type unless
-import DefineOptions from 'unplugin-vue-define-options/vite';
-import purgeIcons from 'vite-plugin-purge-icons';
+import DefineOptions from 'unplugin-vue-define-options/vite'
+import purgeIcons from 'vite-plugin-purge-icons'
 
-import { createAppConfigPlugin } from './appConfig';
-import { configCompressPlugin } from './compress';
-import { configHtmlPlugin } from './html';
-import { configSvgIconsPlugin } from './svgSprite';
-import { configVisualizerConfig } from './visualizer';
-
+import { createAppConfigPlugin } from './appConfig'
+import { configCompressPlugin } from './compress'
+import { configHtmlPlugin } from './html'
+import { configSvgIconsPlugin } from './svgSprite'
+import { configVisualizerConfig } from './visualizer'
 
 async function createPlugins({ isBuild, root, enableMock, compress, enableAnalyze }) {
-  const vitePlugins = [vue(), vueJsx(), DefineOptions()];
+  const vitePlugins = [vue(), vueJsx(), DefineOptions()]
 
-  const appConfigPlugin = await createAppConfigPlugin({ root, isBuild });
-  vitePlugins.push(appConfigPlugin);
+  const appConfigPlugin = await createAppConfigPlugin({ root, isBuild })
+  vitePlugins.push(appConfigPlugin)
 
   // vite-plugin-html
-  vitePlugins.push(configHtmlPlugin({ isBuild }));
+  vitePlugins.push(configHtmlPlugin({ isBuild }))
 
   // vite-plugin-svg-icons
-  vitePlugins.push(configSvgIconsPlugin({ isBuild }));
+  vitePlugins.push(configSvgIconsPlugin({ isBuild }))
 
   // vite-plugin-purge-icons
-  vitePlugins.push(purgeIcons());
+  vitePlugins.push(purgeIcons())
 
   // The following plugins only work in the production environment
   if (isBuild) {
     // rollup-plugin-gzip
     vitePlugins.push(
       configCompressPlugin({
-        compress,
-      }),
-    );
+        compress
+      })
+    )
   }
 
   // rollup-plugin-visualizer
   if (enableAnalyze) {
-    vitePlugins.push(configVisualizerConfig());
+    vitePlugins.push(configVisualizerConfig())
   }
 
-  
-
-  return vitePlugins;
+  return vitePlugins
 }
 
-export { createPlugins };
+export { createPlugins }

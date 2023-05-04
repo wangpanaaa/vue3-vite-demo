@@ -1,26 +1,26 @@
-import { presetTypography, presetUno } from 'unocss';
-import UnoCSS from 'unocss/vite';
+import { presetTypography, presetUno } from 'unocss'
+import UnoCSS from 'unocss/vite'
 
 const commonConfig = {
   server: {
-    host: true,
+    host: true
   },
   esbuild: {
-    drop: [ 'debugger'],
+    drop: ['debugger']
   },
   build: {
     reportCompressedSize: false,
     chunkSizeWarningLimit: 1500,
     rollupOptions: {
       // TODO: Prevent memory overflow
-      maxParallelFileOps: 3,
-    },
+      maxParallelFileOps: 3
+    }
   },
   plugins: [
     UnoCSS({
-      presets: [presetUno(), presetTypography()],
-    }),
-  ],
-};
+      presets: [presetUno(), presetTypography()]
+    })
+  ]
+}
 
-export { commonConfig };
+export { commonConfig }

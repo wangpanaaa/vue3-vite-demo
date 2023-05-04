@@ -11,44 +11,35 @@ export const usePermissionStore = defineStore({
     // To trigger a menu update
     // 触发菜单更新
     lastBuildMenuTime: 0,
-    // Backstage menu list
-    // 后台菜单列表
-    backMenuList: [],
     // menu List
     // 菜单列表
-    frontMenuList: [],
+    frontMenuList: []
   }),
   actions: {
     setPermCodeList(codeList) {
-      this.permCodeList = codeList;
-    },
-
-    setBackMenuList(list) {
-      this.backMenuList = list;
-      list?.length > 0 && this.setLastBuildMenuTime();
+      this.permCodeList = codeList
     },
 
     setFrontMenuList(list) {
-      this.frontMenuList = list;
+      this.frontMenuList = list
     },
 
     setLastBuildMenuTime() {
-      this.lastBuildMenuTime = new Date().getTime();
+      this.lastBuildMenuTime = new Date().getTime()
     },
 
     setDynamicAddedRoute(added) {
-      this.isDynamicAddedRoute = added;
+      this.isDynamicAddedRoute = added
     },
     resetState() {
-      this.isDynamicAddedRoute = false;
-      this.permCodeList = [];
-      this.backMenuList = [];
-      this.lastBuildMenuTime = 0;
+      this.isDynamicAddedRoute = false
+      this.permCodeList = []
+      this.lastBuildMenuTime = 0
     },
     async changePermissionCode() {
       // const codeList = await getPermCode();
-      const codeList=[]
-      this.setPermCodeList(codeList);
-    },
-  },
-});
+      const codeList = []
+      this.setPermCodeList(codeList)
+    }
+  }
+})

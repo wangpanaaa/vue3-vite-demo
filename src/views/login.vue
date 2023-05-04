@@ -6,10 +6,7 @@
 </template>
 
 <script setup>
-import {Loading} from '/@/components/Loading'
+import { Loading } from '/@/components/Loading'
 </script>
 
-
-<style>
-
-</style>
+<style></style>

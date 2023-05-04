@@ -1,17 +1,16 @@
-import { isObject, isString } from '/@/utils/is';
+import { isObject, isString } from '/@/utils/is'
 
-const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm:ss';
-
+const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm:ss'
 
 export function joinTimestamp(join, restful = false) {
   if (!join) {
-    return restful ? '' : {};
+    return restful ? '' : {}
   }
-  const now = new Date().getTime();
+  const now = new Date().getTime()
   if (restful) {
-    return `?_t=${now}`;
+    return `?_t=${now}`
   }
-  return { _t: now };
+  return { _t: now }
 }
 
 /**
@@ -19,26 +18,26 @@ export function joinTimestamp(join, restful = false) {
  */
 export function formatRequestDate(params) {
   if (Object.prototype.toString.call(params) !== '[object Object]') {
-    return;
+    return
   }
 
   for (const key in params) {
-    const format = params[key]?.format ?? null;
+    const format = params[key]?.format ?? null
     if (format && typeof format === 'function') {
-      params[key] = params[key].format(DATE_TIME_FORMAT);
+      params[key] = params[key].format(DATE_TIME_FORMAT)
     }
     if (isString(key)) {
-      const value = params[key];
+      const value = params[key]
       if (value) {
         try {
-          params[key] = isString(value) ? value.trim() : value;
+          params[key] = isString(value) ? value.trim() : value
         } catch (error) {
-          throw new Error(error);
+          throw new Error(error)
         }
       }
     }
     if (isObject(params[key])) {
-      formatRequestDate(params[key]);
+      formatRequestDate(params[key])
     }
   }
 }

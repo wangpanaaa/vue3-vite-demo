@@ -1,23 +1,23 @@
 // axios配置  可自行根据项目进行更改，只需更改该文件即可，其他文件可以不动
 // The axios configuration can be changed according to the project, just change the file, other files can be left unchanged
 
-import { clone } from 'lodash-es';
-import { VAxios } from './Axios';
-import { checkStatus } from './checkStatus';
+import { clone } from 'lodash-es'
+import { VAxios } from './Axios'
+import { checkStatus } from './checkStatus'
 import { useGlobSetting } from '/@/setting'
 import { useMessage } from '/@/utils/useMessage.jsx'
-import { isString, isUnDef, isNull, isEmpty } from '/@/utils/is';
+import { isString, isUnDef, isNull, isEmpty } from '/@/utils/is'
 import { api } from '/@/enums/sys'
 import { RequestEnum, ResultEnum, ContentTypeEnum } from '/@/enums/httpEnum'
-import { joinTimestamp, formatRequestDate } from './helper';
-import { setObjToUrlParams, deepMerge } from '/@/utils';
-import { useErrorLogStoreWithOut } from '/@/store/modules/errorLog';
+import { joinTimestamp, formatRequestDate } from './helper'
+import { setObjToUrlParams, deepMerge } from '/@/utils'
+import { useErrorLogStoreWithOut } from '/@/store/modules/errorLog'
 
-import axios from 'axios';
+import axios from 'axios'
 
-const globSetting = useGlobSetting();
-const urlPrefix = globSetting.urlPrefix;
-const { createMessage, createErrorModal, createSuccessModal } = useMessage();
+const globSetting = useGlobSetting()
+const urlPrefix = globSetting.urlPrefix
+const { createMessage, createErrorModal, createSuccessModal } = useMessage()
 /**
  * @description: 数据处理，方便区分多种处理方式
  */
@@ -68,7 +68,7 @@ const transform = {
     let timeoutMsg = ''
     switch (code) {
       case ResultEnum.TIMEOUT:
-        timeoutMsg = api.timeoutMessage 
+        timeoutMsg = api.timeoutMessage
         // const userStore = useUserStoreWithOut();
         // userStore.setToken(undefined);
         // userStore.logout(true);
@@ -202,7 +202,6 @@ const transform = {
 
     checkStatus(error?.response?.status, msg, errorMessageMode)
 
-    
     return Promise.reject(error)
   }
 }
@@ -251,15 +250,15 @@ function createAxios(opt) {
           retryRequest: {
             isOpenRetry: true,
             count: 5,
-            waitTime: 100,
-          },
-        },
+            waitTime: 100
+          }
+        }
       },
-      opt || {},
-    ),
-  );
+      opt || {}
+    )
+  )
 }
-export const defHttp = createAxios();
+export const defHttp = createAxios()
 
 // other api url
 // export const otherHttp = createAxios({
