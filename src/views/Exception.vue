@@ -2,10 +2,8 @@
   <div>404辣</div>
 </template>
 
-<script>
-export default {
+<script setup>
 
-}
 </script>
 
 <style>

@@ -29,12 +29,6 @@ export function createPermissionGuard(router) {
     }
     next()
   })
-}
-
-export function goGuard(router) {
-  router.beforeEach((to, from, next) => {
-    next()
-  })
 
   router.afterEach(() => {
     NProgress.done()

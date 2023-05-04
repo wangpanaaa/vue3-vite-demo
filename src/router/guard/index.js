@@ -1,7 +1,5 @@
-import { createPermissionGuard, goGuard } from './permissionGuard'
-// Don't change the order of creation
+import { createPermissionGuard } from './permissionGuard'
+
 export function setupRouterGuard(router) {
   createPermissionGuard(router)
-  goGuard(router)
-  console.log('开始拦截路由', router)
 }
